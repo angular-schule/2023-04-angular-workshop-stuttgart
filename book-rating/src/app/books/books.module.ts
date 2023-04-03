@@ -11,11 +11,11 @@ import { RatingComponent } from './rating/rating.component';
   declarations: [
     DashboardComponent,
     BookComponent,
-    RatingComponent
   ],
   imports: [
     CommonModule,
-    BooksRoutingModule
+    BooksRoutingModule,
+    RatingComponent
   ],
   exports: [
     DashboardComponent
