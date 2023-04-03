@@ -13,6 +13,9 @@
 
     <p>{{ book.description }}</p>
     <p>Preis: {{ book.price }}</p>
+
+    <button type="button" class="btn btn-success me-2" (click)="doRateUp()"> + </button>
+    <button type="button" class="btn btn-danger me-2" (click)="doRateDown()"> – </button>
   </div>
 </div>
 
