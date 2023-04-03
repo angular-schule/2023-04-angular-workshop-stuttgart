@@ -8,14 +8,11 @@
         <span class="badge bg-secondary">{{ book.rating }}</span>
       </h2>
     </div>
+
+    <br-rating [rating]="book.rating"></br-rating>
+
     <p>{{ book.description }}</p>
     <p>Preis: {{ book.price }}</p>
   </div>
 </div>
 
-
-
-Aufgaben:
-1.) Gesamtzahl der Bücher ausgeben
-2.) Bewertung mit Sternen ⭐️ anzeigen
-3.) Baue eine eigene Komponente für die Rating-Anzeige, z.B. <br-rating></br-rating>. Das Rating wird über ein PropertyBinding übergeben.

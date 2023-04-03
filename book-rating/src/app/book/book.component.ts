@@ -9,6 +9,10 @@ import { Book } from '../shared/book';
 export class BookComponent {
   @Input() book?: Book;
   @Input() index: number = 0;
+
+  /*createRatings() {
+    return new Array(this.book?.rating);
+  }*/
 }
 
 
