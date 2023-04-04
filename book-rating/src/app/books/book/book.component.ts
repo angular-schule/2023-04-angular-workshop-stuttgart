@@ -8,7 +8,11 @@ import { Book } from '../shared/book';
 })
 export class BookComponent {
   @Input() book?: Book;
-  @Input() index: number = 0;
+  @Input() min = 1;
+  @Input() max = 5;
+  // @Input() rateUpAllowed = false;
+  // @Input() rateDownAllowed = false;
+
   @Output() rateUp = new EventEmitter<Book>();
   @Output() rateDown = new EventEmitter<Book>();
 

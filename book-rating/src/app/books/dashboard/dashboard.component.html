@@ -1,6 +1,8 @@
 <br-book
   *ngFor="let b of books"
   [book]="b"
+  [min]="1"
+  [max]="5"
   (rateUp)="doRateUp($event)"
   (rateDown)="doRateDown($event)"></br-book>
 
