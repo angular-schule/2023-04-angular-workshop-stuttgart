@@ -9,6 +9,7 @@ export class BookRatingService {
   constructor() { }
 
   rateUp(book: Book): Book {
+
     // Early Exit
     if (book.rating >= 5) {
       return book;
@@ -29,3 +30,5 @@ export class BookRatingService {
     };
   }
 }
+
+
