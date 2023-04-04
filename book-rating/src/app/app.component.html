@@ -1,5 +1,17 @@
 <div class="container">
   <h1>{{ title }}</h1>
 
-  <br-dashboard></br-dashboard>
+  <router-outlet></router-outlet>
 </div>
+
+<!--
+  TODO:
+  - Weiterleitung Root-Route ✅
+  - Links
+    - BookComponent => Detailseite
+    - Detailseite => Dashboard
+  - Detailseite
+    - ISBN aus der Route lesen
+    - Buch abrufen (HTTP)
+    - Anzeige
+-->
