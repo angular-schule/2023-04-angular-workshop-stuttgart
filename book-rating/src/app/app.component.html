@@ -1,17 +1,11 @@
 <div class="container">
   <h1>{{ title }}</h1>
 
+  <nav class="mb-4">
+    <a routerLink="/books" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="me-2">Dashboard</a>
+    <a routerLink="/books/create" routerLinkActive="active" class="me-2">Erstellen</a>
+    <a routerLink="/books/search" routerLinkActive="active" class="me-2">Suche</a>
+  </nav>
+
   <router-outlet></router-outlet>
 </div>
-
-<!--
-  TODO:
-  - Weiterleitung Root-Route ✅
-  - Links ✅
-    - BookComponent => Detailseite
-    - Detailseite => Dashboard
-  - Detailseite
-    - ISBN aus der Route lesen
-    - Buch abrufen (HTTP)
-    - Anzeige
--->
