@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 import { BookStoreService } from '../shared/book-store.service';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'br-dashboard',
@@ -25,6 +26,16 @@ export class DashboardComponent {
   doRateDown(book: Book) {
     const ratedBook = this.rs.rateDown(book);
     this.updateList(ratedBook);
+  }
+
+  doDelete(book: Book) {
+    this.bs.delete(book.isbn).subscribe(() => {
+      this.bs.getAll().subscribe(books => {
+        this.books = books;
+      });
+
+      // this.books = this.books.filter(b => book.isbn !== b.isbn);
+    });
   }
 
   private updateList(ratedBook: Book) {

@@ -1,6 +1,3 @@
-<pre>{{ book | json }}</pre>
-
-
 <div class="card mb-4" *ngIf="book">
   <div class="card-body bg-light">
       <img class="img-thumbnail float-end"
@@ -17,8 +14,9 @@
     <p>{{ book.description }}</p>
     <p>Preis: {{ book.price | currency:'EUR' }}</p>
 
-    <button [disabled]="book.rating <= max" type="button" class="btn btn-success me-2" (click)="doRateUp()"> + </button>
-    <button [disabled]="book.rating >= min" type="button" class="btn btn-danger me-2" (click)="doRateDown()"> – </button>
+    <button [disabled]="book.rating >= max" type="button" class="btn btn-success me-2" (click)="doRateUp()"> + </button>
+    <button [disabled]="book.rating <= min" type="button" class="btn btn-danger me-2" (click)="doRateDown()"> – </button>
+    <button type="button" class="btn btn-danger me-2" (click)="doDelete()">Löschen</button>
 
     <a [routerLink]="['/books', book.isbn]">Details</a>
 

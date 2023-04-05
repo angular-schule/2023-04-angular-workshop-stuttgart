@@ -16,6 +16,8 @@ export class BookComponent {
   @Output() rateUp = new EventEmitter<Book>();
   @Output() rateDown = new EventEmitter<Book>();
 
+  @Output() deleteBook = new EventEmitter<Book>();
+
   /*createRatings() {
     return new Array(this.book?.rating);
   }*/
@@ -26,6 +28,10 @@ export class BookComponent {
 
   doRateDown() {
     this.rateDown.emit(this.book);
+  }
+
+  doDelete() {
+    this.deleteBook.emit(this.book);
   }
 }
 

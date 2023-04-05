@@ -4,6 +4,8 @@ import { DashboardComponent } from './dashboard.component';
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { BookStoreService } from '../shared/book-store.service';
+import { of } from 'rxjs';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -21,7 +23,18 @@ describe('DashboardComponent', () => {
       imports: [],
       providers: [
         // BRS ersetzen: Wenn Service angefordert wird, wird stattdessen der Mock ausgeliefert
-        { provide: BookRatingService, useValue: ratingMock }
+        { provide: BookRatingService, useValue: ratingMock },
+        {
+          provide: BookStoreService,
+          useValue: {
+            getAll: () => of([]),
+            getSingle: (isbn: string) => of({
+              isbn,
+              title: '',
+              // ...
+            }),
+          }
+        }
       ],
       schemas: [NO_ERRORS_SCHEMA] // Shallow Component Test
     })
