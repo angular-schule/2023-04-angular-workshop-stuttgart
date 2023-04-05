@@ -1,1 +1,38 @@
-<p>book-create works!</p>
+<form [formGroup]="bookForm" (ngSubmit)="submitForm()">
+  <div class="form-group">
+    <label for="isbnInput">ISBN</label>
+    <input type="text" id="isbnInput" class="form-control" formControlName="isbn">
+
+    <div class="feedback-error" *ngIf="isInvalid('isbn')">Die ISBN ist ungültig.</div>
+    <div class="feedback-error" *ngIf="hasError('isbn', 'minlength')">Die ISBN ist zu kurz.</div>
+
+    <pre>{{ bookForm.get('isbn')?.errors | json }}</pre>
+
+    <!--<br-form-errors controlName="isbn" [messages]="{ required: 'MUSS ANGEGEBEN WERDEN' }"></br-form-errors>-->
+  </div>
+
+  <div class="form-group">
+    <label for="titleInput">Title</label>
+    <input type="text" id="titleInput" class="form-control" formControlName="title">
+  </div>
+
+  <div class="form-group">
+    <label for="descriptionInput">Description</label>
+    <textarea id="descriptionInput" class="form-control" formControlName="description"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="ratingInput">Rating</label>
+    <input type="number" id="ratingInput" class="form-control" formControlName="rating">
+  </div>
+
+  <div class="form-group">
+    <label for="priceInput">Price</label>
+    <input type="number" id="priceInput" class="form-control" formControlName="price">
+  </div>
+
+  <button [disabled]="bookForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+<pre>{{ bookForm.value | json }}</pre>
