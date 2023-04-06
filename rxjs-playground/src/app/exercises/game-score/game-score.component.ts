@@ -20,6 +20,8 @@ export class GameScoreComponent {
 
     /******************************/
 
+    [1,2,3,4,5].reduce((acc, item) => acc + item) // 15
+
 
     /******************************/
 
