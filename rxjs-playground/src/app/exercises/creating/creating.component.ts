@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable, of, from, timer, interval, ReplaySubject, map, filter, Subscriber, Observer, take } from 'rxjs';
+import { Observable, of, from, timer, interval, ReplaySubject, map, filter, Subscriber, Observer, take, OperatorFunction } from 'rxjs';
 
 @Component({
   selector: 'rxw-creating',
@@ -31,15 +31,27 @@ export class CreatingComponent {
     // timer(4000, 1000) // ------------0---1---2---3---4--- ...
     // timer(0, 1000)    // 0---1---2---3---4--- ...
 
+
+    function myOperator(): OperatorFunction<number, string> {
+      return (source$: Observable<number>) => {
+        return new Observable(sub => {
+          source$.subscribe(num => sub.next(num.toString()))
+        })
+      }
+    }
+
     timer(0, 1000).pipe(
       map(e => e * 3),
-      filter(e => e % 2 === 0)
+      filter(e => e % 2 === 0),
+      myOperator()
     ).subscribe({
       next: e => this.log(e),
       complete: () => this.log('COMPLETE'),
     })
 
 
+
+    // filter(e => e % 2 === 0)(map(e => e * 3)(timer(0, 1000)))
 
 
 
