@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BookStoreService } from '../shared/book-store.service';
 import { Book } from '../shared/book';
+import { map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'br-book-details',
@@ -17,12 +18,13 @@ export class BookDetailsComponent {
     // const isbn = this.route.snapshot.paramMap.get('isbn'); // path: 'books/:isbn'
     // console.log(isbn);
 
+
     // Asynchroner Weg / PUSH
-    this.route.paramMap.subscribe(params => {
-      const isbn = params.get('isbn')!;
-      this.bs.getSingle(isbn).subscribe(book => {
-        this.book = book;
-      });
+    this.route.paramMap.pipe(
+      map(params => params.get('isbn')!),
+      switchMap(isbn => this.bs.getSingle(isbn))
+    ).subscribe(book => {
+      this.book = book;
     });
   }
 }
